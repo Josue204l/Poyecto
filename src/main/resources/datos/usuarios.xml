@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Datos iniciales de usuarios. Agregar entradas según sea necesario. -->
+<usuarios>
+    <administrador>
+        <id>admin01</id>
+        <clave>Admin123!</clave>
+        <rol>ADMINISTRADOR</rol>
+    </administrador>
+    <funcionario>
+        <id>func01</id>
+        <clave>Func123!</clave>
+        <rol>FUNCIONARIO</rol>
+        <nombre>Juan Pérez</nombre>
+        <telefono>88001234</telefono>
+    </funcionario>
+</usuarios>

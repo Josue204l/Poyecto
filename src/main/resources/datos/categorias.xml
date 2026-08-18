@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Datos iniciales de categorías de recursos. -->
+<categorias>
+    <categoria>
+        <id>CAT-001</id>
+        <descripcion>Sala de reuniones</descripcion>
+    </categoria>
+    <categoria>
+        <id>CAT-002</id>
+        <descripcion>Computadora</descripcion>
+    </categoria>
+    <categoria>
+        <id>CAT-003</id>
+        <descripcion>Proyector</descripcion>
+    </categoria>
+</categorias>

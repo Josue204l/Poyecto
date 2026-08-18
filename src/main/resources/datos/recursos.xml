@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Datos iniciales de recursos físicos. -->
+<recursos>
+    <recurso>
+        <id>REC-001</id>
+        <descripcion>Sala A - Piso 1</descripcion>
+        <categoria>
+            <id>CAT-001</id>
+            <descripcion>Sala de reuniones</descripcion>
+        </categoria>
+    </recurso>
+    <recurso>
+        <id>REC-002</id>
+        <descripcion>Computadora Dell #1</descripcion>
+        <categoria>
+            <id>CAT-002</id>
+            <descripcion>Computadora</descripcion>
+        </categoria>
+    </recurso>
+    <recurso>
+        <id>REC-003</id>
+        <descripcion>Proyector Epson #1</descripcion>
+        <categoria>
+            <id>CAT-003</id>
+            <descripcion>Proyector</descripcion>
+        </categoria>
+    </recurso>
+</recursos>
