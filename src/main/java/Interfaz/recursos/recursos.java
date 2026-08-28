@@ -1,4 +1,4 @@
 package Interfaz.recursos;
 
-public class recursosView {
+public class recursos {
 }
