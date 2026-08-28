@@ -1,43 +1,66 @@
-public class Login extends javax.swing.JDialog {
-private javax.swing.JPanel contentPane;
-private javax.swing.JButton buttonOK;
-private javax.swing.JButton buttonCancel;
+package Interfaz.login;
 
-public Login(){
-setContentPane(contentPane);
-setModal(true);
-getRootPane().setDefaultButton(buttonOK);
+import javax.swing.*;
+import java.awt.event.*;
 
-buttonOK.addActionListener(new java.awt.event.ActionListener(){public void actionPerformed(java.awt.event.ActionEvent e){onOK();}});
+public class Login extends JDialog {
+    private JPanel contentPane;
+    private JButton cnacelarbutton;
+    private JButton cambiarbutton;
+    private JButton ingresarButton;
+    private JTextField textID;
+    private JTextField textClave;
+    private JLabel clave;
+    private JLabel id;
+    private JPanel ingreso;
+    private JPanel botonesescritura;
+    private JPanel panelbotones;
 
-buttonCancel.addActionListener(new java.awt.event.ActionListener(){public void actionPerformed(java.awt.event.ActionEvent e){onCancel();}});
+    public Login() {
+        setContentPane(contentPane);
+        setModal(true);
+        setTitle("Login");
+        setSize(400, 300);
+        setLocationRelativeTo(null);
+        getRootPane().setDefaultButton(cnacelarbutton);
 
- // call onCancel() when cross is clicked
-setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-addWindowListener(new java.awt.event.WindowAdapter() {
-  public void windowClosing(java.awt.event.WindowEvent e) {
-   onCancel();
-  }
-});
+        cnacelarbutton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onOK();
+            }
+        });
 
- // call onCancel() on ESCAPE
-contentPane.registerKeyboardAction(  new java.awt.event.ActionListener() {    public void actionPerformed(java.awt.event.ActionEvent e) {      onCancel();
-    }  },  javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ESCAPE, 0),  javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);}
+        cambiarbutton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onCancel();
+            }
+        });
 
-private void onOK(){
- // add your code here
-dispose();
-}
+        // call onCancel() when cross is clicked
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                onCancel();
+            }
+        });
 
-private void onCancel(){
- // add your code here if necessary
-dispose();
-}
+        // call onCancel() on ESCAPE
+        contentPane.registerKeyboardAction(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                onCancel();
+            }
+        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+    }
 
-public static void main(String[] args){
-Login dialog = new Login();
-dialog.pack();
-dialog.setVisible(true);
-System.exit(0);
-}
+    private void onOK() {
+        // add your code here
+        dispose();
+    }
+
+    private void onCancel() {
+        // add your code here if necessary
+        dispose();
+    }
+
+
 }
