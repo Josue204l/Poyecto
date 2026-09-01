@@ -6,7 +6,7 @@ import logic.Usuario;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class Login extends JDialog {
+public class LoginView extends JDialog {
     private JPanel contentPane;
     private JButton cancelarbutton;
     private JButton cambiarbutton;
@@ -19,7 +19,7 @@ public class Login extends JDialog {
     private JPanel botonesescritura;
     private JPanel panelbotones;
 
-    public Login() {
+    public LoginView() {
         setContentPane(contentPane);
         setModal(true);
         setTitle("Login");

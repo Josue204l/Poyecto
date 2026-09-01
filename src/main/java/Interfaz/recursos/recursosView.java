@@ -2,7 +2,7 @@ package Interfaz.recursos;
 
 import javax.swing.*;
 
-public class recursos {
+public class recursosView {
 
     private JPanel recursos;
     private JComboBox category;
@@ -19,7 +19,7 @@ public class recursos {
     private JTextField descripcion;
     private JButton borrarButton;
 
-    public recursos() {
+    public recursosView() {
     }
 
     public JPanel getPanel() {

@@ -1,5 +1,5 @@
 import javax.swing.*;
-import Interfaz.login.Login;
+import Interfaz.login.LoginView;
 
 
 public class Application {
@@ -8,7 +8,7 @@ public class Application {
         catch (Exception ex) {}
 
 
-        Login loginFrame = new Login();
+        LoginView loginFrame = new LoginView();
         loginFrame.setVisible(true);
     }
 
