@@ -1,7 +1,8 @@
 import javax.swing.*;
 import Interfaz.login.Login;
 
-public class Main {
+
+public class Application {
     public static void main(String[] args) {
         try { UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel"); }
         catch (Exception ex) {}

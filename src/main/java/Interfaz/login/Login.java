@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 public class Login extends JDialog {
     private JPanel contentPane;
-    private JButton cnacelarbutton;
+    private JButton cancelarbutton;
     private JButton cambiarbutton;
     private JButton ingresarButton;
     private JTextField textID;
@@ -33,7 +33,7 @@ public class Login extends JDialog {
             }
         });
 
-        cnacelarbutton.addActionListener(new ActionListener() {
+        cancelarbutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
