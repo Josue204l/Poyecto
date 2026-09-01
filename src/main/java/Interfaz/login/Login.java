@@ -12,7 +12,7 @@ public class Login extends JDialog {
     private JButton cambiarbutton;
     private JButton ingresarButton;
     private JTextField textID;
-    private JTextField textClave;  // Nota: cambiar a JPasswordField en el .form para ocultar la clave
+    private JTextField textClave;
     private JLabel clave;
     private JLabel id;
     private JPanel ingreso;
