@@ -1,94 +1,44 @@
 package Interfaz.login;
 
-import logic.Service;
-import logic.Usuario;
-
 import javax.swing.*;
-import java.awt.event.*;
 
-public class LoginView extends JDialog {
+public class LoginView {
+
     private JPanel contentPane;
-    private JButton cancelarbutton;
-    private JButton cambiarbutton;
+    private JPanel panel;
+    private JTextField txtUsuario;
+    private JPasswordField txtClave;
+    private JLabel ID;
+    private JLabel Clave;
     private JButton ingresarButton;
-    private JTextField textID;
-    private JTextField textClave;
-    private JLabel clave;
-    private JLabel id;
-    private JPanel ingreso;
-    private JPanel botonesescritura;
-    private JPanel panelbotones;
+    private JButton btnCancelar;
+    private JButton cambiarButton;
+    private JPanel icono;
+
+    private ControllerLogin controller;
 
     public LoginView() {
-        setContentPane(contentPane);
-        setModal(true);
-        setTitle("Login");
-        setSize(400, 300);
-        setLocationRelativeTo(null);
-        getRootPane().setDefaultButton(ingresarButton);
-
-        ingresarButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
-        cancelarbutton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
-
-        cambiarbutton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCambiarClave();
-            }
-        });
-
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                onCancel();
-            }
-        });
-
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
-    private void onOK() {
-        String idTexto = textID.getText().trim();
-        String claveTexto = textClave.getText().trim();
-
-        Usuario usuario = Service.getInstancia().login(idTexto, claveTexto);
-        if (usuario == null) {
-            JOptionPane.showMessageDialog(this, "ID o clave incorrectos.", "Error de acceso", JOptionPane.ERROR_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Bienvenido, " + idTexto + " (" + usuario.getRol() + ")", "Acceso exitoso", JOptionPane.INFORMATION_MESSAGE);
-            dispose();
+    public void setController(ControllerLogin controller) {
+        this.controller = controller;
+        if (ingresarButton != null) {
+            ingresarButton.addActionListener(e -> {
+                if (this.controller != null) this.controller.login();
+            });
+        }
+        if (btnCancelar != null) {
+            btnCancelar.addActionListener(e -> System.exit(0));
         }
     }
 
-    private void onCancel() {
-        dispose();
+    public JPanel getMainPanel() {
+        return contentPane != null ? contentPane : (panel != null ? panel : new JPanel());
     }
 
-    private void onCambiarClave() {
-        String claveActual = JOptionPane.showInputDialog(this, "Ingrese clave actual:");
-        if (claveActual == null) return;
-        String claveNueva = JOptionPane.showInputDialog(this, "Ingrese nueva clave:");
-        if (claveNueva == null || claveNueva.trim().isEmpty()) return;
-
-        String idTexto = textID.getText().trim();
-        Usuario usuario = Service.getInstancia().login(idTexto, claveActual);
-        if (usuario == null) {
-            JOptionPane.showMessageDialog(this, "Clave actual incorrecta.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        Service.getInstancia().cambiarClave(usuario, claveActual, claveNueva);
-        JOptionPane.showMessageDialog(this, "Clave actualizada correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-    }
+    public JTextField getTxtUsuario() { return txtUsuario; }
+    public JPasswordField getTxtClave() { return txtClave; }
+    public JButton getIngresarButton() { return ingresarButton; }
+    public JButton getBtnCancelar() { return btnCancelar; }
+    public JButton getCambiarButton() { return cambiarButton; }
 }

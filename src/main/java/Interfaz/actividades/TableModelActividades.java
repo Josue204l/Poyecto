@@ -1,32 +1,33 @@
-package Interfaz.categorias;
+package Interfaz.actividades;
 
-import logic.Categoria;
+import logic.Reserva;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
-public class TableModelCategoria extends AbstractTableModel {
+public class TableModelActividades extends AbstractTableModel {
 
     public static final int ID = 0;
-    public static final int NOMBRE = 1;
+    public static final int TITULO = 1;
+    public static final int FECHA = 2;
 
-    private final String[] cols = {"ID / Código", "Nombre de Categoría"};
-    private List<Categoria> filas;
+    private final String[] cols = {"ID / Código", "Actividad", "Fecha"};
+    private List<Reserva> filas;
 
-    public TableModelCategoria(List<Categoria> filas) {
+    public TableModelActividades(List<Reserva> filas) {
         this.filas = filas;
     }
 
-    public List<Categoria> getFilas() {
+    public List<Reserva> getFilas() {
         return filas;
     }
 
-    public void setFilas(List<Categoria> filas) {
+    public void setFilas(List<Reserva> filas) {
         this.filas = filas;
         fireTableDataChanged();
     }
 
-    public Categoria getRowAt(int row) {
+    public Reserva getRowAt(int row) {
         if (filas != null && row >= 0 && row < filas.size()) {
             return filas.get(row);
         }
@@ -50,12 +51,14 @@ public class TableModelCategoria extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int col) {
-        Categoria c = filas.get(row);
+        Reserva r = filas.get(row);
         switch (col) {
             case ID:
-                return c.getId();
-            case NOMBRE:
-                return c.getNombre();
+                return r.getId();
+            case TITULO:
+                return r.getRecurso() != null ? r.getRecurso().getNombre() : "Sin asignar";
+            case FECHA:
+                return r.getFecha() != null ? r.getFecha().toString() : "";
             default:
                 return "";
         }

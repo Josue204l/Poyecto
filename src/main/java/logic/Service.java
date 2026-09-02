@@ -1,29 +1,48 @@
 package logic;
 
 import data.Data;
+import data.XmlPersister;
+import java.util.List;
 
 public class Service {
 
-    private static Service instancia;
+    private static Service instance;
+    private Data data;
 
-    private Service() {}
+    private Service() {
+        this.data = Data.getInstancia();
+    }
 
-    public static Service getInstancia() {
-        if (instancia == null) instancia = new Service();
-        return instancia;
+    public static synchronized Service instance() {
+        if (instance == null) {
+            instance = new Service();
+        }
+        return instance;
+    }
+
+    public Data getData() {
+        return data;
+    }
+
+    public void store() {
+        if (data != null && data.getFuncionarios() != null) {
+            XmlPersister.guardarFuncionarios(data.getFuncionarios());
+        }
     }
 
     public Usuario login(String id, String clave) {
-        for (Funcionario f : Data.getInstancia().getFuncionarios()) {
-            if (f.getId().equals(id) && f.getClave().equals(clave)) return f;
+        if (data != null && data.getFuncionarios() != null) {
+            for (Funcionario f : data.getFuncionarios()) {
+                if (f.getId().equals(id) && f.getClave().equals(clave)) {
+                    return f;
+                }
+            }
         }
         return null;
     }
 
-    public boolean cambiarClave(Usuario usuario, String claveActual, String claveNueva) {
-        if (!usuario.getClave().equals(claveActual)) return false;
-        usuario.setClave(claveNueva);
-        Data.getInstancia().guardarFuncionarios();
-        return true;
-    }
+    public List<Funcionario> getFuncionarios() { return data.getFuncionarios(); }
+    public List<Categoria> getCategorias() { return data.getCategorias(); }
+    public List<Recurso> getRecursos() { return data.getRecursos(); }
+    public List<Reserva> getReservas() { return data.getReservas(); }
 }

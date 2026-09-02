@@ -23,9 +23,15 @@ public class Data {
             funcionarios.add(new Funcionario("1234", "123", "ADMIN", "Administrador", ""));
             XmlPersister.guardarFuncionarios(funcionarios);
         }
-        reservas = new ArrayList<>();
-        recursos = new ArrayList<>();
-        categorias = new ArrayList<>();
+
+        categorias = XmlPersister.cargarCategorias();
+        if (categorias == null) categorias = new ArrayList<>();
+
+        recursos = XmlPersister.cargarRecursos();
+        if (recursos == null) recursos = new ArrayList<>();
+
+        reservas = XmlPersister.cargarReservas();
+        if (reservas == null) reservas = new ArrayList<>();
     }
 
     public static Data getInstancia() {
@@ -34,9 +40,19 @@ public class Data {
     }
 
     public List<Funcionario> getFuncionarios() { return funcionarios; }
-    public void guardarFuncionarios() { XmlPersister.guardarFuncionarios(funcionarios); }
-
     public List<Reserva> getReservas() { return reservas; }
     public List<Recurso> getRecursos() { return recursos; }
     public List<Categoria> getCategorias() { return categorias; }
+
+    public void guardarTodo() {
+        XmlPersister.guardarFuncionarios(funcionarios);
+        XmlPersister.guardarCategorias(categorias);
+        XmlPersister.guardarRecursos(recursos);
+        XmlPersister.guardarReservas(reservas);
+    }
+
+    public void guardarFuncionarios() { XmlPersister.guardarFuncionarios(funcionarios); }
+    public void guardarCategorias() { XmlPersister.guardarCategorias(categorias); }
+    public void guardarRecursos() { XmlPersister.guardarRecursos(recursos); }
+    public void guardarReservas() { XmlPersister.guardarReservas(reservas); }
 }

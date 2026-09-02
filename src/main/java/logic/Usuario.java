@@ -21,4 +21,14 @@ public abstract class Usuario {
 
     public String getRol() { return rol; }
     public void setRol(String rol) { this.rol = rol; }
+
+    // Getter por defecto para evitar errores de compilación al pedir el nombre
+    public String getNombre() {
+        return id != null ? id : "";
+    }
+
+    @Override
+    public String toString() {
+        return getNombre();
+    }
 }
